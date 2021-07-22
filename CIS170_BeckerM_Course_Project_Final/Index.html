@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Beemen Honey Home</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="CIS170Final.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type = "text/javascript">
+window.alert("Warning, you about to go to a website with a high sugar content");
+var name;
+var now = new Date();
+var hour = now.getHours();
+name = window.prompt("Hello there, please enter your name");
+var age;
+age = window.prompt("how old are you");
+</script>
+</head>
+<div id="wrapper">
+<body>
+<header>
+<h1>Beemen Honey</h1>
+</header>
+<div class="container">
+<div class="column-left">
+<nav>
+<ul>
+  <li><a href="Index.html">Home</a></li>
+  <li><a href="Honey.html">Honey</a></li>
+  <li><a href="Game.html">Game</a></li>
+  <li><a href="About.html">About</a></li>
+  <li><a href="Contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+<div class="column-center">
+<div class="script">
+<script type = "text/javascript">
+if (hour < 12)
+	document.writeln("<h2> Good Morning, " + name);
+if (hour >= 12){
+	hour = hour - 12;
+	if (hour < 6)
+		document.writeln("<h2> Good Afternoon, " + name);
+	if (hour >= 6)
+		document.writeln("<h2> Good Evening, " + name);
+		}
+document.writeln("<h2> and Welcome to Beemen Honey");
+if (age < 18)
+	document.writeln("<h3> I Am Sure We Have Something Perfect For Someone As Young As You");
+	else
+	document.writeln("<h3> I Am Sure We Have Something Perfect For You");
+</script>
+</div>
+<main>
+<div>
+<h3>Freshly Harvested Honey For Your Pleasure</h3>
+<p>Beemen Beekeeping is proud of the quality of the honey that our bees make every year. Not only that, but we also produce other bee-related products, each of which are just as high quality as the last.</p>
+<br>
+<h3>Here are some of our favorite products</h3>
+<ul>
+  <li>Bees wax candles with a soothing honey scent</li>
+  <li>Hard candies made and flavored with real honey</li>
+  <li>Edible honeycombs drenched with honey</li>
+</ul>
+<br>
+<h3>Other Products</h3>
+<p id="demo"></p>
+<script>
+var products = ["Bees Wax Lip Balm", "Honey-Scented Body Wash", "Honey-Scented Hand Soap"];
+var text = "";
+var i;
+for (i = 0; i < products.length; i++) {
+  text += products[i] + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+<br><br><br>
+</div>
+<br>
+</main>
+</div>
+<div class="column-right">
+<img src="./bee_images/honeyjar.jpg" style="float:left; width:172px; height:210px;"><br><br><br><br>
+<script>
+var day;
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case  6:
+    day = "Saturday";
+}
+document.writeln("<h3> Hello There, Today is Such A Wonderful " + day);
+</script>
+</div>
+</div>
+<footer>
+Copyright &copy; 2020 Beemen Beekeeping<br>
+<a href="mailto:mason_becker@stu.centralaz.edu">mason_becker@stu.centralaz.edu</a><br>
+Webpage created by Mason Becker, Web Designer
+</footer>
+</div>
+</body>
+</html>
