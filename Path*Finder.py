@@ -1,14 +1,28 @@
+# This is a Python3 Pathfinder
+#! /usr/bin/env/python3
+
+# You will need to install pygame to run this program
+# To install pygame type "pip3 install pygame" in the terminal
+
+# Instructions:
+# The first click marks a node as the start (Orange)
+# The second click marks a node as the end (Blue)
+# All other clicks will create obstacles (Black)
+# Right clicks will remove an obstacle, the start or the finish
+# When you are finished drawing the course press space to start
+# The program will find the shortest possible path and draw it (Purple)
+
 import pygame
 import math
 from queue import PriorityQueue
 
 WIDTH = 800
 WIN = pygame.display.set_mode((WIDTH, WIDTH))
-pygame.display.set_caption("A* Path Finding Algorithm")
+pygame.display.set_caption("PathFinder Pygame")
 
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
-BLUE = (0, 255, 0)
+BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -44,7 +58,7 @@ class Node:
 		return self.color == ORANGE
 
 	def is_ending(self):
-		return self.color == TURQUOISE
+		return self.color == BLUE
 
 	def reset(self):
 		self.color = WHITE
@@ -62,7 +76,7 @@ class Node:
 		self.color = BLACK
 
 	def make_ending(self):
-		self.color = TURQUOISE
+		self.color = BLUE
 
 	def pathway(self):
 		self.color = PURPLE
