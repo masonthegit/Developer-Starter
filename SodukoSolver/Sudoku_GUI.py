@@ -150,8 +150,8 @@ def redraw_window(win, board, time, strikes):
     text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
     win.blit(text, (540 - 160, 560))
     # Draw Strikes
-    text = fnt.SysFont("Mistakes: " + strikes, 1, (0, 0, 0))
-    win.blit(text, (20, 560))
+    scoretext = fnt.render("Mistakes: {0}".format(strikes), 1, (0, 0, 0))
+    win.blit(scoretext, (20, 560))
     # Draw grid and board
     board.draw(win)
 
@@ -206,14 +206,14 @@ def main():
                     i, j = board.selected
                     if board.cubes[i][j].temp != 0:
                         if board.place(board.cubes[i][j].temp):
-                            print("Success")
+                            print("Correct")
                         else:
-                            print("Wrong")
+                            print("Incorrect")
                             strikes += 1
                         key = None
 
                         if board.is_finished():
-                            print("Game over")
+                            print("You Win")
                             run = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
