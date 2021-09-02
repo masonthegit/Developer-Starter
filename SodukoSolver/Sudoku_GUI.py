@@ -5,25 +5,62 @@
 # To install pygame type "pip3 install pygame" in the terminal
 
 # Instructions:
+# Clicking on an empty square lets you select it
+# After selecting a square you can enter a number from 1-9
+# You can enter numbers as many times as you like, but once you press enter, the number will be locked into place
+# If you enter a number that is in the same cube, row, or column as the same number, it will be rejected instead
+# If you enter a number that will force another square into the same situation, it will still be rejected
+# To win you must fill the board with numbers that are all locked into place using the same rules as Sudoku
 
 import pygame
 from Sudoku_Solver import solve, valid
 import time
+import random
 pygame.font.init()
 
-
 class Grid:
-    board = [
-        [7, 8, 0, 4, 0, 0, 1, 2, 0],
-        [6, 0, 0, 0, 7, 5, 0, 0, 9],
-        [0, 0, 0, 6, 0, 1, 0, 7, 8],
-        [0, 0, 7, 0, 4, 0, 2, 6, 0],
-        [0, 0, 1, 0, 5, 0, 9, 3, 0],
-        [9, 0, 4, 0, 6, 0, 0, 0, 5],
-        [0, 7, 0, 3, 0, 0, 0, 1, 2],
-        [1, 2, 0, 0, 0, 7, 4, 0, 0],
-        [0, 4, 9, 2, 0, 6, 0, 0, 7]
+# The first Sudoku board
+    board1 = [
+        [7,8,0,4,0,0,1,2,0],
+        [6,0,0,0,7,5,0,0,9],
+        [0,0,0,6,0,1,0,7,8],
+        [0,0,7,0,4,0,2,6,0],
+        [0,0,1,0,5,0,9,3,0],
+        [9,0,4,0,6,0,0,0,5],
+        [0,7,0,3,0,0,0,1,2],
+        [1,2,0,0,0,7,4,0,0],
+        [0,4,9,2,0,6,0,0,7]
     ]
+
+# The second Sudoku board
+    board2 = [
+        [0,0,0,0,0,0,0,0,9],
+        [0,8,0,0,6,3,0,4,7],
+        [0,0,0,1,2,5,6,0,0],
+        [9,3,8,6,0,4,7,1,0],
+        [0,7,0,3,0,0,0,6,0],
+        [0,0,1,2,0,7,4,0,0],
+        [0,0,0,0,0,2,0,0,0],
+        [0,5,7,0,9,0,0,2,4],
+        [4,0,2,0,0,0,0,0,0]
+    ]
+
+# The third Sudoku board
+    board3 = [
+        [0,0,0,0,1,0,0,0,9],
+        [9,1,8,0,0,4,0,0,0],
+        [4,0,7,0,0,0,5,0,1],
+        [0,0,0,2,6,0,9,7,4],
+        [0,0,0,1,0,0,3,0,2],
+        [0,0,0,4,0,0,1,5,0],
+        [0,0,4,0,5,6,2,0,8],
+        [0,0,0,0,3,0,0,1,0],
+        [2,5,0,0,0,1,6,9,7]
+    ]
+
+# Randomly picks a Sudoku board
+    board_list = [board1, board2, board3]
+    board = random.choice(board_list)
 
     def __init__(self, rows, cols, width, height):
         self.rows = rows
@@ -56,7 +93,7 @@ class Grid:
         self.cubes[row][col].set_temp(val)
 
     def draw(self, win):
-        # Draw Grid Lines
+# Draw Grid Lines
         gap = self.width / 9
         for i in range(self.rows+1):
             if i % 3 == 0 and i != 0:
@@ -66,13 +103,13 @@ class Grid:
             pygame.draw.line(win, (0,0,0), (0, i*gap), (self.width, i*gap), thick)
             pygame.draw.line(win, (0, 0, 0), (i * gap, 0), (i * gap, self.height), thick)
 
-        # Draw Cubes
+# Draw Cubes
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].draw(win)
 
     def select(self, row, col):
-        # Reset all other
+ # Reset all other
         for i in range(self.rows):
             for j in range(self.cols):
                 self.cubes[i][j].selected = False
@@ -127,14 +164,14 @@ class Cube:
         y = self.row * gap
 
         if self.temp != 0 and self.value == 0:
-            text = fnt.render(str(self.temp), 1, (128,128,128))
+            text = fnt.render(str(self.temp), 1, (225, 0, 0))
             win.blit(text, (x+5, y+5))
         elif not(self.value == 0):
             text = fnt.render(str(self.value), 1, (0, 0, 0))
             win.blit(text, (x + (gap/2 - text.get_width()/2), y + (gap/2 - text.get_height()/2)))
 
         if self.selected:
-            pygame.draw.rect(win, (255,0,0), (x,y, gap ,gap), 3)
+            pygame.draw.rect(win, (150, 255, 0), (x,y, gap ,gap), 3)
 
     def set(self, val):
         self.value = val
@@ -142,26 +179,29 @@ class Cube:
     def set_temp(self, val):
         self.temp = val
 
-
+# Update Window
 def redraw_window(win, board, time, strikes):
-    win.fill((215, 111, 0))
-    # Draw time
+    win.fill((102, 51, 0))
+
+# Draw Time
     fnt = pygame.font.SysFont("comicsans", 40)
     text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
-    win.blit(text, (540 - 160, 560))
-    # Draw Strikes
+    win.blit(text, (540 - 200, 560))
+
+# Draw Strikes
     scoretext = fnt.render("Mistakes: {0}".format(strikes), 1, (0, 0, 0))
     win.blit(scoretext, (20, 560))
-    # Draw grid and board
+
+# Draw Grid and Board
     board.draw(win)
 
-
+# Time
 def format_time(secs):
-    sec = secs%60
-    minute = secs//60
-    hour = minute//60
+    sec = secs % 60
+    minute = secs // 60 
+    hour = minute // 60
 
-    mat = " " + str(minute) + ":" + str(sec)
+    mat = "{:01d}:{:02d}:{:02d}".format(hour, minute, sec)
     return mat
 
 
