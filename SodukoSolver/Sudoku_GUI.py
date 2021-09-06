@@ -1,4 +1,4 @@
-# This program creates a random Sudoku board in text using Python 3
+# This program creates a random Sudoku board GUI using Python 3
 #! /usr/bin/env/python3
 
 # You will need to install pygame to run this program
@@ -19,7 +19,7 @@ import random
 pygame.font.init()
 
 class Grid:
-# The first Sudoku board
+# The First Sudoku Board
     board1 = [
         [7,8,0,4,0,0,1,2,0],
         [6,0,0,0,7,5,0,0,9],
@@ -32,7 +32,7 @@ class Grid:
         [0,4,9,2,0,6,0,0,7]
     ]
 
-# The second Sudoku board
+# The Second Sudoku Board
     board2 = [
         [0,0,0,0,0,0,0,0,9],
         [0,8,0,0,6,3,0,4,7],
@@ -45,7 +45,7 @@ class Grid:
         [4,0,2,0,0,0,0,0,0]
     ]
 
-# The third Sudoku board
+# The Third Sudoku Board
     board3 = [
         [0,0,0,0,1,0,0,0,9],
         [9,1,8,0,0,4,0,0,0],
@@ -58,10 +58,11 @@ class Grid:
         [2,5,0,0,0,1,6,9,7]
     ]
 
-# Randomly picks a Sudoku board
+# Randomly Picks A Sudoku Board
     board_list = [board1, board2, board3]
     board = random.choice(board_list)
 
+# The Basic Values
     def __init__(self, rows, cols, width, height):
         self.rows = rows
         self.cols = cols
@@ -164,7 +165,7 @@ class Cube:
         y = self.row * gap
 
         if self.temp != 0 and self.value == 0:
-            text = fnt.render(str(self.temp), 1, (225, 0, 0))
+            text = fnt.render(str(self.temp), 1, (0, 0, 0))
             win.blit(text, (x+5, y+5))
         elif not(self.value == 0):
             text = fnt.render(str(self.value), 1, (0, 0, 0))
@@ -254,6 +255,14 @@ def main():
 
                         if board.is_finished():
                             print("You Win")
+                            if strikes == 0:
+                                print("You Did Perfect!")
+                            elif strikes > 0 and strikes <= 10:
+                                print("Great Job!")
+                            elif strikes > 10 and strikes <= 30:
+                                print("You Did Good")
+                            elif strikes > 30:
+                                print("Can You Do Better?")
                             run = False
 
             if event.type == pygame.MOUSEBUTTONDOWN:
