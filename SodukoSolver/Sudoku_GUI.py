@@ -14,6 +14,7 @@
 
 import pygame
 from Sudoku_Solver import solve, valid
+
 import time
 import random
 pygame.font.init()
@@ -190,7 +191,7 @@ class Cube:
         self.temp = val
 
 # Update Window
-def redraw_window(win, board, time, strikes):
+def redraw_window(win, board, time, strikes, moves, successes):
     win.fill((102, 51, 0))
 
 # Draw Time
@@ -198,9 +199,17 @@ def redraw_window(win, board, time, strikes):
     text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
     win.blit(text, (540 - 200, 560))
 
+# Draw Right Moves
+    goodtext = fnt.render("Successes: {0}".format(successes), 1, (0,0,0))
+    win.blit(goodtext, (540 - 210, 610))
+
 # Draw Strikes
     scoretext = fnt.render("Mistakes: {0}".format(strikes), 1, (0, 0, 0))
     win.blit(scoretext, (20, 560))
+
+# Draw Moves
+    movetext = fnt.render("Moves: {0}".format(moves), 1, (0, 0, 0))
+    win.blit(movetext, (20, 610))
 
 # Draw Grid and Board
     board.draw(win)
@@ -217,13 +226,15 @@ def format_time(secs):
 
 # Main Function For The Program
 def main():
-    win = pygame.display.set_mode((540,600))
-    pygame.display.set_caption("Sudoku")
+    win = pygame.display.set_mode((540,660))
+    pygame.display.set_caption("Sudoku: ")
     board = Grid(9, 9, 540, 540)
     key = None
     run = True
     start = time.time()
     strikes = 0
+    moves = 0
+    successes = 0
     while run:
         play_time = round(time.time() - start)
 
@@ -263,14 +274,16 @@ def main():
                     i, j = board.selected
                     if board.cubes[i][j].temp != 0:
                         if board.place(board.cubes[i][j].temp):
-                            print("Correct")
+                            successes += 1
+                            moves += 1
                         else:
-                            print("Incorrect")
                             strikes += 1
+                            moves += 1
                         key = None
 
 # Messages For Solving The Board Based On Strike Count
                         if board.is_finished():
+                            
                             print("You Win")
                             if strikes == 0:
                                 print("You Did Perfect!")
@@ -294,7 +307,7 @@ def main():
             board.sketch(key)
 
 # Redraws The GUI Based On Any Changes On Values
-        redraw_window(win, board, play_time, strikes)
+        redraw_window(win, board, play_time, strikes, moves, successes)
         pygame.display.update()
 
 # Runs The Program
