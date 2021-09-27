@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Calculator Home</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="Utility.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type = "text/javascript">
+var now = new Date();
+var hour = now.getHours();
+</script>
+</head>
+<div id="wrapper">
+<body>
+<header>
+<h1>Program Project</h1>
+</header>
+<div class="container">
+<div class="column-left">
+<nav>
+<ul>
+  <li><a href="Home.html">Home</a></li>
+  <li><a href="Calculator.html">Calculator</a></li>
+  <li><a href="Contact.html">Contact</a></li>
+</ul>
+</nav>
+</div>
+<div class="column-center">
+<div class="script">
+<script type = "text/javascript">
+if (hour < 12)
+	document.writeln("<h2> Good Morning");
+if (hour >= 12){
+	hour = hour - 12;
+	if (hour < 6)
+		document.writeln("<h2> Good Afternoon");
+	if (hour >= 6)
+		document.writeln("<h2> Good Evening");
+		}
+</script>
+<h2>Hello There</h2>
+</div>
+<main>
+<div>
+<h3>This is the home page of this utility website</h3>
+<br><br><br>
+</div>
+<br>
+</main>
+</div>
+<div class="column-right">
+<img src="./Utility_Img/Greenboard.jpg" style="float:left; width:172px; height:210px;"><br><br><br><br>
+<script>
+var day;
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+    day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case  6:
+    day = "Saturday";
+}
+document.writeln("<h3> Hello There, Today is " + day);
+</script>
+</div>
+</div>
+<footer>
+Copyright &copy; 2021 N/a<br>
+Webpage created by Mason Becker, Web Designer
+</footer>
+</div>
+</body>
+</html>
