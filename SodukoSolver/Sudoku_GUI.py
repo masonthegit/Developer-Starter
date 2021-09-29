@@ -285,14 +285,12 @@ def main():
                         if board.is_finished():
                             
                             print("You Win")
-                            if strikes == 0:
-                                print("You Did Perfect!")
-                            elif strikes > 0 and strikes <= 10:
-                                print("Great Job!")
-                            elif strikes > 10 and strikes <= 30:
-                                print("You Did Good")
-                            elif strikes > 30:
-                                print("Can You Do Better?")
+                            print("Number Of Mistakes:")
+                            print(strikes)
+                            print("Number Of Total Moves:")
+                            print(moves)
+                            print("Total Time Taken:")
+                            print()
                             run = False
 
 # Gets The Position On The GUI You Clicked On
