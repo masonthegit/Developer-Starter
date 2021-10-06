@@ -235,6 +235,7 @@ def main():
     strikes = 0
     moves = 0
     successes = 0
+
     while run:
         play_time = round(time.time() - start)
 
@@ -289,8 +290,8 @@ def main():
                             print(strikes)
                             print("Number Of Total Moves:")
                             print(moves)
-                            print("Total Time Taken:")
-                            print()
+                            print("Total Time (Seconds):")
+                            print(play_time)
                             run = False
 
 # Gets The Position On The GUI You Clicked On
