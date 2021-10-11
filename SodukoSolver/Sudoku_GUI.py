@@ -231,6 +231,9 @@ def main():
     board = Grid(9, 9, 540, 540)
     key = None
     run = True
+    clock = pygame.time.Clock()
+    frame_count = 0
+    frame_rate = 60
     start = time.time()
     strikes = 0
     moves = 0
@@ -238,6 +241,14 @@ def main():
 
     while run:
         play_time = round(time.time() - start)
+        second = frame_count // frame_rate
+        hours = minutes // 60
+        minutes = second // 60
+        seconds = second % 60
+
+        output_string = "Total Time: {:01d}:{:02d}:{:02d}".format(hours, minutes, seconds)
+        frame_count += 1
+        clock.tick(frame_rate)
 
 # Quits The Game
         for event in pygame.event.get():
@@ -290,8 +301,7 @@ def main():
                             print(strikes)
                             print("Number Of Total Moves:")
                             print(moves)
-                            print("Total Time (Seconds):")
-                            print(play_time)
+                            print(output_string)
                             run = False
 
 # Gets The Position On The GUI You Clicked On
