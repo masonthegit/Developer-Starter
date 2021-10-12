@@ -241,10 +241,11 @@ def main():
 
     while run:
         play_time = round(time.time() - start)
-        second = frame_count // frame_rate
+
+# Time That Will Print After The Game Ends
+        seconds = play_time
+        minutes = seconds // 60
         hours = minutes // 60
-        minutes = second // 60
-        seconds = second % 60
 
         output_string = "Total Time: {:01d}:{:02d}:{:02d}".format(hours, minutes, seconds)
         frame_count += 1
@@ -293,9 +294,8 @@ def main():
                             moves += 1
                         key = None
 
-# Messages For Solving The Board Based On Strike Count
+# Prints Out The Results Of The Game
                         if board.is_finished():
-                            
                             print("You Win")
                             print("Number Of Mistakes:")
                             print(strikes)
