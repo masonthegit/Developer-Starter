@@ -23,21 +23,51 @@
 </div>
 <div class="column-center">
 <main>
-<ul>
-Beemen Honey<br>
-3301 Trindle Rd.<br>
-Camp Hill, PA 17011<br>
-1-800-545-8192<br><br>
-</ul>
-<form name="htmlform" method="post" action="html_form_send.php">
+<br>
+<script>
+    let saveFile = () => {
+    	
+        // Get the data from each element on the form.
+    	  const firstname = document.getElementById('firstname');
+        const lastname = document.getElementById('lastname');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const msg = document.getElementById('msg');
+        
+        // This variable stores all the data.
+        let data = 
+            '\r First Name: ' + firstname.value + ' \r\n ' + 
+            'Last Name: ' +lastname.value + ' \r\n ' + 
+            'Email: ' + email.value + ' \r\n ' + 
+            'Telephone Number: ' + phone.value + ' \r\n ' + 
+            'Message: ' + msg.value;
+        
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = 'DataForm.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>
 <table width="480px">
-</tr>
 <tr>
  <td valign="top">
   <label for="first_name">First Name</label>
  </td>
  <td valign="top">
-  <input  type="text" name="first_name" maxlength="50" size="30">
+  <input  type="text" id="firstname" placeholder="First Name... " required maxlength="50" size="30">
  </td>
 </tr>
 <tr>
@@ -45,7 +75,7 @@ Camp Hill, PA 17011<br>
   <label for="last_name">Last Name</label>
  </td>
  <td valign="top">
-  <input  type="text" name="last_name" maxlength="50" size="30">
+  <input  type="text" id="lastname" placeholder="Last Name... " required maxlength="50" size="30">
  </td>
 </tr>
 <tr>
@@ -53,7 +83,7 @@ Camp Hill, PA 17011<br>
   <label for="email">Email Address</label>
  </td>
  <td valign="top">
-  <input  type="text" name="email" maxlength="80" size="30">
+  <input  type="email" id="email" placeholder="Email Address... " required maxlength="80" size="30">
  </td>
 </tr>
 <tr>
@@ -61,7 +91,7 @@ Camp Hill, PA 17011<br>
   <label for="telephone">Telephone Number</label>
  </td>
  <td valign="top">
-  <input  type="text" name="telephone" maxlength="30" size="30">
+  <input  type="tel" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required maxlength="30" size="30">
  </td>
 </tr>
 <tr>
@@ -69,22 +99,21 @@ Camp Hill, PA 17011<br>
   <label for="comments">Comments</label>
  </td>
  <td valign="top">
-  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+  <textarea id="msg" name="comments" maxlength="1000" cols="25" rows="6"></textarea>
  </td>
 </tr>
 <tr>
  <td colspan="2" style="text-align:center">
-  <input type="submit" value="Send"><input type="reset" value="Clear">
+  <input type="submit" value="Save As File" onclick="saveFile()"><input type="reset" value="Clear">
  </td>
 </tr>
 </table>
-</form>
 </main>
 </div>
 <div class="column-right">
 <img src="./Utility_Img/Blueboard.jpg" style="float:left; width:172px; height:210px;"><br><br><br><br>
 <br><br><br><br>
-<p>This is a contact form that uses PHP. WIP</p>
+<p>This is a contact form that uses Javascript to save the info in a file.</p>
 </div>
 </div>
 <footer>
