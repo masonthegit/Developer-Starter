@@ -75,6 +75,22 @@ nav ul { list-style-type: none;
        padding-left: 0; 
 }
 
+gamenav { text-align: center; 
+     font-weight: bold; 
+	 font-size: 1.5em;
+	 padding-top: 10px;
+	 float: left;
+	 width: 175px;
+}
+gamenav a { text-decoration: none; }
+gamenav a:link { color: #3366ff; }
+gamenav a:visited{ color: #1a1aff; }
+gamenav a:hover { color: #01e082;}
+gamenav ul { list-style-type: none;
+       padding-left: 0; 
+}
+
+
 h1 { padding-top: 45px;
     padding-left: 250px;
 	font-size: 3em; 
