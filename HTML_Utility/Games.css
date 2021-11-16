@@ -1,0 +1,91 @@
+* { box-sizing: border-box; }
+header, main, footer { display: block; }
+body { background-image: linear-gradient(to left, #2eaf7d, #109be6, #2eaf7d); 
+      color: #000000;
+      font-family: Verdana, Arial, sans-serif;
+}
+#wrapper { width: 80%;
+           margin-right: auto;
+		   background-image: linear-gradient(to right, #22bab5, #22bab5, #449342);
+		   margin-left: auto;
+           width: 880px;
+		   box-shadow: 2px 2px 2px #1affff; 
+}
+
+table, th, td {border: 1px solid black}
+
+table { width: 90%;
+      margin: auto;
+	  border-spacing: 0;
+	  background-color: #2a97fb; }
+
+td, th { padding: 10px; }
+
+tr:nth-of-type(odd) { background-color: #0073dd; }
+
+form { padding: 1em; }
+
+header {height: 150px;
+        background-image: url(../HTML_Utility/Utility_Img/Artificial_Intelligence.jpg);
+	    background-size: 220px;
+        background-repeat: no-repeat;
+}
+
+.column-left {float: left;
+			  width: 15%;
+			  border-top: 2px #0073dd solid;
+			  padding: 2px;
+			  background-color: #22bab5;
+}
+
+.column-center {display: inline-block;
+			    width: 70%;
+			    background-image: linear-gradient(to bottom, #48a7fd, #a5d4ff);
+			    border-top: 2px #0073dd solid;
+			    padding: 2px;
+		   		border-bottom: 2px #0073dd solid;
+}
+
+
+.column-right {float: right;
+			   width: 15%;
+			   border-top: 2px #0073dd solid;
+			   padding: 2px;
+}
+
+.script {padding-left: 2em;}
+
+nav { text-align: center; 
+     font-weight: bold; 
+	 font-size: 1.5em;
+	 padding-top: 10px;
+	 float: left;
+	 width: 175px;
+}
+nav a { text-decoration: none; }
+nav a:link { color: #3366ff; }
+nav a:visited{ color: #1a1aff; }
+nav a:hover { color: #01e082;}
+nav ul { list-style-type: none;
+       padding-left: 0; 
+}
+
+
+h1 { padding-top: 45px;
+    padding-left: 250px;
+	font-size: 3em; 
+	color: #000000;
+}
+
+ul { list-style-type: none;}
+
+footer { background-image: linear-gradient(to right, #22bab5, #22bab5, #449342);
+       font-size: h4;
+	   font-style: italic;
+	   text-align: center;
+	   padding-bottom: 10px;
+	   padding-top: 5px;
+}
+main { padding: 0 0 2em 0;
+}
+main h3, main p, main div{ padding-left: 2em; padding-right: 2em; }

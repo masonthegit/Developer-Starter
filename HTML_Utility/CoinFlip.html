@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Utility Coin Flip</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="Games.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="./Utility_Img/gitfavicon.ico" type="image/x-icon"> 
+</head>
+<div id="wrapper">
+<body>
+<header>
+<h1>Flip The Coin</h1>
+</header>
+<div class="column-left">
+</div>
+<div class="column-center">
+<main>
+<br>
+<table>
+	<tr>
+		<td><input type="button" id="toss" value=" Flip Coin " onclick="toss()"></td>
+	</tr>
+	<tr>
+		<td>Number of Flips Performed: <span id="seq">0</span></td>
+	</tr>	
+	<tr>
+		<td>Heads Count: <span id="headsDisplay">0</span></td>
+	</tr>
+	<tr>	
+		<td>Tails Count: <span id="tailsDisplay">0</span></td>
+	</tr>	
+	<tr>
+		<td><span id="results"><img id="myImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/2009NativeAmericanRev.jpg/150px-2009NativeAmericanRev.jpg"></span></td>
+	</tr>
+</table>
+<Script>
+var tails = 0;
+var heads = 0;
+var clicks = 0;
+function clicked()
+{clicks += 1;
+ document.getElementById("seq").innerHTML = clicks;
+}
+function toss() {
+    var rows = 0;
+    document.getElementById("results").innerHTML = "";
+    while (rows < 1) {   
+       var arr = new Array();
+        for (var i = 0; i < 1; i++) 
+		{  
+            var val = Math.floor( Math.random() * 2 );
+            if (val === 1) {
+                arr[i] = imageHeads("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/2009NativeAmericanRev.jpg/150px-2009NativeAmericanRev.jpg");
+				heads = heads + 1;
+				checkHeads();
+            } else {
+                arr[i] = imageTails("https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2010NativeAmerican_Rev.jpg/150px-2010NativeAmerican_Rev.jpg");
+				tails = tails + 1;
+				checkTails();
+            }       
+        }
+        document.getElementById("results").appendChild(arr[0]);
+        delete arr;
+        rows++;
+    }
+	clicked();
+}
+function checkHeads()
+{document.getElementById("headsDisplay").innerHTML = heads;
+}
+function checkTails()
+{document.getElementById("tailsDisplay").innerHTML = tails;
+}
+function imageHeads(src) {
+    var img = document.createElement("img");
+    img.src = src;
+    return img;	
+}
+function imageTails(src) {
+    var img = document.createElement("img");
+    img.src = src;
+    return img;	
+}
+</Script>
+<br><br><br><br><br><br><br>
+</main>
+</div>
+<div class="column-right">
+<br><br><br><br>
+<br><br><br><br>
+</div>
+<footer>
+Copyright &copy; 2021 N/a<br>
+Webpage created by Mason Becker, Web Designer
+</footer>
+</div>
+</body>
+</html>
