@@ -78,15 +78,14 @@ nav ul { list-style-type: none;
 
 gamenav { text-align: center; 
      font-weight: bold; 
-	 font-size: 1.5em;
+	 font-size: 1.2em;
 	 padding-top: 10px;
-	 float: left;
-	 width: 175px;
+	 float: center;
 }
 gamenav a { text-decoration: none; }
 gamenav a:link { color: #3366ff; }
 gamenav a:visited{ color: #1a1aff; }
-gamenav a:hover { color: #01e082;}
+gamenav a:hover { color: #008080;}
 gamenav ul { list-style-type: none;
        padding-left: 0; 
 }

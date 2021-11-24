@@ -25,6 +25,22 @@ tr:nth-of-type(odd) { background-color: #0073dd; }
 
 form { padding: 1em; }
 
+
+gamenav { text-align: center; 
+     font-weight: bold; 
+	 font-size: 1.2em;
+	 padding-top: 10px;
+	 float: center;
+}
+gamenav a { text-decoration: none; }
+gamenav a:link { color: #3366ff; }
+gamenav a:visited{ color: #1a1aff; }
+gamenav a:hover { color: #008080;}
+gamenav ul { list-style-type: none;
+       padding-left: 0; 
+}
+
+
 header {height: 150px;
         background-image: url(../HTML_Utility/Utility_Img/Artificial_Intelligence.jpg);
 	    background-size: 220px;
